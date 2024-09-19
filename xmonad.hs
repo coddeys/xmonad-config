@@ -27,8 +27,8 @@ main = xmonad $ def
 myLayout =  Full ||| ResizableTall 1 (3/100) (1/2) []
 
 
-myKeys = [ ((0, 0x1008ff13), spawn "pamixer --increase 10")
-    , ((0, 0x1008ff11), spawn "pamixer --decrease 10")
+myKeys = [ ((0, 0x1008ff13), spawn "pamixer --increase 5")
+    , ((0, 0x1008ff11), spawn "pamixer --decrease 5")
     , ((0, 0x1008FF02), spawn "xbacklight -inc 20")
     , ((0, 0x1008FF2E), spawn "xbacklight -inc 20")
     , ((0, 0x1008FF03), spawn "xbacklight -dec 20")
