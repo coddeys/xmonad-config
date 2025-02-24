@@ -94,7 +94,7 @@ addkeys conf@XConfig {modMask = modm} =
   , ((modm .|. shiftMask, xK_u),  shiftToNext)
   , ((modm .|. shiftMask, xK_l),  shiftToPrev)
   , ((modm,  xK_g ),   withFocused toggleBorder)
-  , ((modm, xK_y ), kill1)
+  , ((modm .|. shiftMask, xK_y ), kill1)
 
   -- restart or kill
   , ((modm,                 xK_k), spawn "xmonad --recompile && xmonad --restart")
