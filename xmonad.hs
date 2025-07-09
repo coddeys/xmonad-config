@@ -95,7 +95,7 @@ addkeys conf@XConfig {modMask = modm} =
   , ((modm .|. shiftMask, xK_l),  shiftToPrev)
   
   , ((modm, xK_g ),   withFocused toggleBorder)
-  , ((modm, xK_h ), kill1)
+  , ((modm .|. shiftMask, xK_h ), kill1)
   , ((modm, xK_o), sendMessage MirrorShrink)
   , ((modm, xK_slash), sendMessage MirrorExpand)
   
@@ -104,6 +104,7 @@ addkeys conf@XConfig {modMask = modm} =
   , ((modm,               xK_Return), spawn "alacritty")
   , ((modm,               xK_y), spawn "dmenu_run")
   , ((modm,               xK_j), spawn "emacsclient -c")
+  , ((modm,               xK_b), spawn "chromium")
   
   -- restart or kill
   , ((modm,                 xK_k), spawn "xmonad --recompile && xmonad --restart")
@@ -120,7 +121,7 @@ addkeys conf@XConfig {modMask = modm} =
   -- lock screen
   -- , ((modm, xK_l), spawn "betterlockscreen --lock dim")
   -- rofi keybindings
-  -- , ((controlMask              , xK_space), spawn "rofi -show combi -combi-modi 'drun,run,ssh' -modi combi -show-icons")
+  -- , ((controlMask              , xK_space), spawn "rofi -show combi -combi-modi 'drn,run,ssh' -modi combi -show-icons")
   -- , ((controlMask .|. shiftMask, xK_space), spawn "rofi -show p -modi 'p:rofi-power-menu --choices=reboot/shutdown/logout/suspend'")
   -- https://github.com/svenstaro/rofi-calc
   -- , ((modm,                      xK_c),     spawn "rofi -show calc -modi calc -no-show-match -no-sort")
