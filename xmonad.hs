@@ -24,7 +24,7 @@ main = xmonad $ def
         , modMask            = mod4Mask
         , keys = C.customKeys delkeys addkeys
         -- , keys               = copyWindowKeys `mappend` keys def
-        , terminal           = "termonad"
+        , terminal           = "alacritty"
         , normalBorderColor  = "#CCCCCC"
         , startupHook         = setWMName "LG3D"
         , focusedBorderColor = "#6C71C4"
@@ -93,9 +93,18 @@ addkeys conf@XConfig {modMask = modm} =
   , ((modm, xK_l), prevWS)
   , ((modm .|. shiftMask, xK_u),  shiftToNext)
   , ((modm .|. shiftMask, xK_l),  shiftToPrev)
-  , ((modm,  xK_g ),   withFocused toggleBorder)
-  , ((modm .|. shiftMask, xK_y ), kill1)
-
+  
+  , ((modm, xK_g ),   withFocused toggleBorder)
+  , ((modm, xK_h ), kill1)
+  , ((modm, xK_o), sendMessage MirrorShrink)
+  , ((modm, xK_slash), sendMessage MirrorExpand)
+  
+  --
+  , ((modm .|. shiftMask, xK_Return), windows W.shiftMaster)
+  , ((modm,               xK_Return), spawn "alacritty")
+  , ((modm,               xK_y), spawn "dmenu_run")
+  , ((modm,               xK_j), spawn "emacsclient -c")
+  
   -- restart or kill
   , ((modm,                 xK_k), spawn "xmonad --recompile && xmonad --restart")
   , ((modm .|. shiftMask, xK_k), io X.exitSuccess)
@@ -111,10 +120,10 @@ addkeys conf@XConfig {modMask = modm} =
   -- lock screen
   -- , ((modm, xK_l), spawn "betterlockscreen --lock dim")
   -- rofi keybindings
-  , ((controlMask              , xK_space), spawn "rofi -show combi -combi-modi 'drun,run,ssh' -modi combi -show-icons")
-  , ((controlMask .|. shiftMask, xK_space), spawn "rofi -show p -modi 'p:rofi-power-menu --choices=reboot/shutdown/logout/suspend'")
+  -- , ((controlMask              , xK_space), spawn "rofi -show combi -combi-modi 'drun,run,ssh' -modi combi -show-icons")
+  -- , ((controlMask .|. shiftMask, xK_space), spawn "rofi -show p -modi 'p:rofi-power-menu --choices=reboot/shutdown/logout/suspend'")
   -- https://github.com/svenstaro/rofi-calc
-  , ((modm,                      xK_c),     spawn "rofi -show calc -modi calc -no-show-match -no-sort")
+  -- , ((modm,                      xK_c),     spawn "rofi -show calc -modi calc -no-show-match -no-sort")
   ] ++
   -- This is using a list comprehension to build a list of workspace key
   -- bindings.
